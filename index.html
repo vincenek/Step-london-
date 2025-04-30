@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stephlondon Giftshop - Unique Gifts & Decor</title>
+    <style>
+        :root {
+            --primary-color: #88B04B;
+            --secondary-color: #4A5336;
+            --accent-color: #F7C548;
+            --text-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #F9F6EE;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+                        url('https://i.postimg.cc/jDBRkNGh/f565c5d4-9463-4f2c-955b-479271023881.jpg');
+            background-size: cover;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card img {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: var(--secondary-color);
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+
+        .contact-section {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .contact-section a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="https://i.postimg.cc/qNqfrR8Z/67fddb9c-e7a7-4222-a2eb-b439e54a14b1.jpg" alt="Stephlondon Giftshop Logo" class="logo">
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to Stephlondon Giftshop</h1>
+        <p>Creating memorable experiences through thoughtful gifts and beautiful spaces</p>
+    </section>
+
+    <div class="services-grid">
+        <div class="service-card">
+            <img src="https://i.postimg.cc/jDBRkNGh/f565c5d4-9463-4f2c-955b-479271023881.jpg" alt="Interior Decorating">
+            <h2>Interior Decorating</h2>
+            <p>Transform your space with our eco-friendly decor solutions and personalized styling services.</p>
+        </div>
+
+        <div class="service-card">
+            <img src="https://i.postimg.cc/GBYb0tRn/5f1a154b-52e2-49e0-ad93-aef43be0d4e5.jpg" alt="Surprise Packages">
+            <h2>Surprise Packages</h2>
+            <p>Curated gift boxes filled with sustainable goodies for every occasion.</p>
+        </div>
+
+        <div class="service-card">
+            <img src="https://i.postimg.cc/bsNYGqx1/IMG-0525.jpg" alt="Teddy Bears">
+            <h2>Luxury Teddy Bears</h2>
+            <p>Handcrafted plush companions made with organic materials.</p>
+        </div>
+
+        <div class="service-card">
+            <img src="https://example.com/stanley-cup.jpg" alt="Stanley Cups">
+            <h2>Stanley Cups</h2>
+            <p>Premium reusable drinkware in trendy designs.</p>
+        </div>
+    </div>
+
+    <section class="contact-section">
+        <h2>Get in Touch</h2>
+        <a href="tel:09120840447">+234 912 084 0447</a>
+        <a href="tel:09134911468">+234 913 491 1468</a>
+        <a href="mailto:ifunanyachukwuma61@gmail.com">ifunanyachukwuma61@gmail.com</a>
+    </section>
+
+    <footer>
+        <p>© 2024 Stephlondon Giftshop - Sustainable Gifts & Decor</p>
+        <p>Eco-friendly packaging ♻️ Natural materials 🌿 Personalized service</p>
+    </footer>
+</body>
+</html>
