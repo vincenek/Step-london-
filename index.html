@@ -7,97 +7,116 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --eco-green: #2ecc71;
-            --sunshine-yellow: #f1c40f;
-            --ocean-blue: #3498db;
-            --natural-white: #ecf0f1;
-            --earth-brown: #2c3e50;
+            --fresh-green: #27ae60;
+            --warm-yellow: #f1c40f;
+            --trust-blue: #2980b9;
+            --pure-white: #ffffff;
+            --eco-beige: #f5f5f5;
+            --nature-dark: #2c3e50;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Avenir Next', 'Segoe UI', sans-serif;
         }
 
         body {
-            background: var(--natural-white);
-            color: var(--earth-brown);
+            background: var(--eco-beige);
+            color: var(--nature-dark);
+            line-height: 1.6;
         }
 
         /* Header Styles */
         .header {
-            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
-                        url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: var(--fresh-green);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
         }
 
         .logo {
-            max-width: 220px;
-            margin: 0 auto;
+            max-width: 180px;
+            height: auto;
         }
 
-        /* Navigation */
-        .nav-bar {
-            background: var(--eco-green);
-            padding: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+                        url('https://www.transparenttextures.com/patterns/soft-circle-scales.png');
         }
 
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: transform 0.3s;
+        .hero h1 {
+            color: var(--nature-dark);
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
         }
 
-        .nav-link:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Galaxy Section */
-        .galaxy-grid {
+        /* Products Grid */
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
             padding: 3rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .category-card {
-            background: white;
+        .product-card {
+            background: var(--pure-white);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            position: relative;
         }
 
-        .category-card:hover {
-            transform: translateY(-5px);
+        .product-card:hover {
+            transform: translateY(-7px);
         }
 
-        .category-image {
+        .product-image {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
-            border-bottom: 3px solid var(--sunshine-yellow);
+            border-bottom: 3px solid var(--warm-yellow);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .price-tag {
+            background: var(--trust-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 1rem 0;
         }
 
         /* Cart System */
         .cart-icon {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            font-size: 1.5rem;
+            position: relative;
+            color: white;
+            font-size: 1.4rem;
             cursor: pointer;
-            z-index: 1000;
+        }
+
+        #cart-count {
+            background: var(--warm-yellow);
+            color: var(--nature-dark);
+            border-radius: 50%;
+            padding: 3px 8px;
+            font-size: 0.8rem;
+            margin-left: 5px;
         }
 
         .cart-modal {
@@ -108,129 +127,113 @@
             transform: translate(-50%, -50%);
             background: white;
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-            z-index: 1001;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.15);
+            z-index: 1000;
             width: 90%;
             max-width: 500px;
         }
 
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            margin: 1rem 0;
-            padding: 1rem;
-            background: var(--natural-white);
-            border-radius: 10px;
-        }
-
-        /* CEO Section */
-        .ceo-section {
+        /* Business Description */
+        .about-section {
             text-align: center;
-            padding: 3rem 2rem;
-            background: var(--ocean-blue);
-            color: white;
+            padding: 4rem 2rem;
+            background: var(--pure-white);
+            margin: 3rem 0;
         }
 
-        .ceo-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 1rem auto;
-            border: 3px solid var(--sunshine-yellow);
-        }
-
-        /* WhatsApp Integration */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            color: white;
-            padding: 1rem;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            z-index: 1000;
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--nature-dark);
         }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Header -->
     <header class="header">
         <img src="https://i.postimg.cc/qNqfrR8Z/67fddb9c-e7a7-4222-a2eb-b439e54a14b1.jpg" alt="Stephlondon Logo" class="logo">
-        <div class="nav-bar">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="#galaxy" class="nav-link">Galaxy</a>
-            <a href="#cart" class="nav-link cart-trigger">Cart (<span id="cart-count">0</span>)</a>
-            <a href="#contact" class="nav-link">Contact</a>
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
         </div>
     </header>
 
-    <!-- Galaxy Section -->
-    <section id="galaxy" class="galaxy-grid">
-        <!-- Interior Decorating -->
-        <div class="category-card">
-            <img src="https://i.postimg.cc/jDBRkNGh/f565c5d4-9463-4f2c-955b-479271023881.jpg" class="category-image">
-            <div class="category-content">
-                <h3>Interior Decorating</h3>
-                <button class="add-to-cart" data-item="Interior Decor Package" data-price="299">Add to Cart ₦299</button>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Curated Joy & Beautiful Spaces</h1>
+        <div class="about-content">
+            <p>At Stephlondon Gift Shop, we specialize in creating magical moments through:</p>
+            <ul style="list-style: none; margin: 1.5rem 0;">
+                <li>🎁 Bespoke Gift Packages</li>
+                <li>🏡 Eco-Friendly Interior Design</li>
+                <li>🧸 Premium Teddy Bears</li>
+                <li>🥤 Trendy Stanley Cups</li>
+                <li>🎉 Memorable Event Planning</li>
+            </ul>
+            <p>Our eco-conscious approach ensures every creation brings joy while respecting our planet.</p>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <div class="products-grid">
+        <!-- Interior Decor -->
+        <div class="product-card">
+            <img src="https://i.postimg.cc/jDBRkNGh/f565c5d4-9463-4f2c-955b-479271023881.jpg" class="product-image">
+            <div class="product-info">
+                <h3>Interior Design Package</h3>
+                <div class="price-tag">₦45,000</div>
+                <button class="add-to-cart" data-item="Interior Design" data-price="45000">Add to Cart</button>
             </div>
         </div>
 
         <!-- Surprise Packages -->
-        <div class="category-card">
-            <img src="https://i.postimg.cc/GBYb0tRn/5f1a154b-52e2-49e0-ad93-aef43be0d4e5.jpg" class="category-image">
-            <div class="category-content">
-                <h3>Surprise Packages</h3>
-                <button class="add-to-cart" data-item="Surprise Package" data-price="199">Add to Cart ₦199</button>
+        <div class="product-card">
+            <img src="https://i.postimg.cc/GBYb0tRn/5f1a154b-52e2-49e0-ad93-aef43be0d4e5.jpg" class="product-image">
+            <div class="product-info">
+                <h3>Surprise Gift Box</h3>
+                <div class="price-tag">₦25,000</div>
+                <button class="add-to-cart" data-item="Surprise Gift Box" data-price="25000">Add to Cart</button>
             </div>
         </div>
 
         <!-- Teddy Bears -->
-        <div class="category-card">
-            <img src="https://i.postimg.cc/bsNYGqx1/IMG-0525.jpg" class="category-image">
-            <div class="category-content">
-                <h3>Premium Teddy Bears</h3>
-                <button class="add-to-cart" data-item="Premium Teddy Bear" data-price="149">Add to Cart ₦149</button>
+        <div class="product-card">
+            <img src="https://i.postimg.cc/bsNYGqx1/IMG-0525.jpg" class="product-image">
+            <div class="product-info">
+                <h3>Luxury Teddy Bear</h3>
+                <div class="price-tag">₦18,000</div>
+                <button class="add-to-cart" data-item="Luxury Teddy Bear" data-price="18000">Add to Cart</button>
             </div>
         </div>
 
         <!-- Stanley Cups -->
-        <div class="category-card">
-            <img src="https://i.postimg.cc/kDKhXJPY/1822f78c-3904-4c7e-b0be-76ded2af7372.jpg" class="category-image">
-            <div class="category-content">
-                <h3>Stanley Cups</h3>
-                <button class="add-to-cart" data-item="Stanley Cup" data-price="249">Add to Cart ₦249</button>
+        <div class="product-card">
+            <img src="https://i.postimg.cc/kDKhXJPY/1822f78c-3904-4c7e-b0be-76ded2af7372.jpg" class="product-image">
+            <div class="product-info">
+                <h3>Designer Stanley Cup</h3>
+                <div class="price-tag">₦32,000</div>
+                <button class="add-to-cart" data-item="Stanley Cup" data-price="32000">Add to Cart</button>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
-        <h2>Shopping Cart</h2>
-        <div id="cart-items"></div>
-        <p>Total: ₦<span id="cart-total">0</span></p>
-        <button onclick="checkout()" class="btn-checkout">Proceed to WhatsApp Checkout</button>
+        <h2 style="margin-bottom: 1.5rem;">Your Shopping Cart</h2>
+        <div id="cart-items" style="margin-bottom: 2rem;"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3>Total: ₦<span id="cart-total">0</span></h3>
+            <button onclick="checkout()" style="background: var(--fresh-green); color: white; padding: 0.8rem 2rem; border: none; border-radius: 25px; cursor: pointer;">
+                Checkout via WhatsApp
+            </button>
+        </div>
     </div>
-
-    <!-- CEO Section -->
-    <section class="ceo-section">
-        <img src="https://i.postimg.cc/jWjSt3Wv/863e7a1d-3fb1-4bcd-b0db-d3f96088238a.jpg" alt="CEO Stephlondon" class="ceo-image">
-        <h2>Meet Our Founder - Stephlondon</h2>
-        <p>Bringing joy through creative gifting solutions since 2020</p>
-    </section>
-
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/+2349120840447" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
 
     <script>
         let cart = [];
         
-        // Cart Functions
         function updateCart() {
             document.getElementById('cart-count').textContent = cart.length;
             const cartItems = document.getElementById('cart-items');
@@ -242,20 +245,24 @@
             cart.forEach((item, index) => {
                 total += item.price;
                 cartItems.innerHTML += `
-                    <div class="cart-item">
-                        <span>${item.name}</span>
-                        <span>₦${item.price}</span>
-                        <button onclick="removeItem(${index})">×</button>
+                    <div class="cart-item" style="padding: 1rem; background: #f8f9fa; margin: 0.5rem 0; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span style="font-weight: 500;">${item.name}</span>
+                            <br>
+                            <span style="color: var(--trust-blue);">₦${item.price.toLocaleString()}</span>
+                        </div>
+                        <button onclick="removeItem(${index})" style="background: none; border: none; color: #e74c3c; cursor: pointer;">×</button>
                     </div>
                 `;
             });
             
-            cartTotal.textContent = total;
+            cartTotal.textContent = total.toLocaleString();
         }
 
         function addToCart(name, price) {
-            cart.push({ name, price });
+            cart.push({ name, price: Number(price) });
             updateCart();
+            showCartModal();
         }
 
         function removeItem(index) {
@@ -264,33 +271,36 @@
         }
 
         function checkout() {
-            const message = `Hello Stephlondon Gift Shop! I'd like to order:%0A${
-                cart.map(item => `- ${item.name} (₦${item.price})`).join('%0A')
-            }%0ATotal: ₦${cart.reduce((sum, item) => sum + item.price, 0)}`;
+            const message = `Hello Stephlondon Gift Shop! I want to order:%0A%0A*My Order List*%0A${
+                cart.map(item => `➤ ${item.name} - ₦${item.price.toLocaleString()}`).join('%0A')
+            }%0A%0A*Total:* ₦${cart.reduce((sum, item) => sum + item.price, 0).toLocaleString()}%0A%0APlease confirm availability. Thank you! 🌟`;
             
-            window.open(`https://wa.me/+2349120840447?text=${message}`);
+            window.open(`https://wa.me/+2349120840447?text=${encodeURIComponent(message)}`);
             cart = [];
             updateCart();
+            hideCartModal();
+        }
+
+        function showCartModal() {
+            document.getElementById('cartModal').style.display = 'block';
+        }
+
+        function hideCartModal() {
             document.getElementById('cartModal').style.display = 'none';
         }
 
         // Event Listeners
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', () => {
-                addToCart(
-                    button.dataset.item,
-                    parseInt(button.dataset.price)
-                );
+                addToCart(button.dataset.item, button.dataset.price);
             });
         });
 
-        document.querySelector('.cart-trigger').addEventListener('click', () => {
-            document.getElementById('cartModal').style.display = 'block';
-        });
+        document.querySelector('.cart-icon').addEventListener('click', showCartModal);
 
         window.onclick = function(event) {
-            if (event.target == document.getElementById('cartModal')) {
-                document.getElementById('cartModal').style.display = 'none';
+            if (event.target === document.getElementById('cartModal')) {
+                hideCartModal();
             }
         }
     </script>
