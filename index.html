@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephlondon Giftshop - Unique Gifts & Decor</title>
+    <title>Stephlondon Gift Shop - Creative Gifting & Decor Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #88B04B;
-            --secondary-color: #4A5336;
-            --accent-color: #F7C548;
-            --text-color: #333333;
+            --primary-green: #27ae60;
+            --primary-yellow: #f1c40f;
+            --primary-blue: #2980b9;
+            --eco-light: #f9f9f9;
+            --eco-dark: #2c3e50;
         }
 
         * {
@@ -20,36 +22,52 @@
         }
 
         body {
-            background-color: #F9F6EE;
-            color: var(--text-color);
-            line-height: 1.6;
+            background-color: var(--eco-light);
+            color: var(--eco-dark);
         }
 
         .header {
-            background-color: white;
-            padding: 20px;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+                        url('https://www.transparenttextures.com/patterns/clean-gray-paper.png');
+            padding: 1rem;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .logo {
             max-width: 200px;
-            height: auto;
+            margin: 0 auto;
+        }
+
+        nav {
+            background: var(--primary-green);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-yellow);
         }
 
         .hero {
             text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
-                        url('https://i.postimg.cc/jDBRkNGh/f565c5d4-9463-4f2c-955b-479271023881.jpg');
-            background-size: cover;
+            padding: 4rem 2rem;
+            background: url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 40px 20px;
+            gap: 2rem;
+            padding: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -57,113 +75,130 @@
         .service-card {
             background: white;
             border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.3s ease;
+            overflow: hidden;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
         }
 
-        .service-card img {
+        .service-image {
             width: 100%;
-            max-height: 250px;
+            height: 200px;
             object-fit: cover;
-            border-radius: 8px;
+            border-bottom: 3px solid var(--primary-yellow);
         }
 
-        h1 {
-            color: var(--secondary-color);
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            color: var(--primary-color);
-            margin: 20px 0;
+        .service-content {
+            padding: 1.5rem;
         }
 
         .contact-section {
-            background-color: var(--primary-color);
+            background: var(--primary-blue);
             color: white;
-            padding: 40px 20px;
+            padding: 3rem 2rem;
             text-align: center;
         }
 
-        .contact-section a {
-            color: white;
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 1rem;
+            border-radius: 25px;
             text-decoration: none;
-            display: block;
-            margin: 10px 0;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--primary-yellow);
+            color: var(--eco-dark);
         }
 
         footer {
-            background-color: var(--secondary-color);
+            background: var(--eco-dark);
             color: white;
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            padding: 1.5rem;
+            margin-top: 3rem;
         }
 
         @media (max-width: 768px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 2em;
+            nav a {
+                display: block;
+                margin: 1rem 0;
             }
         }
     </style>
 </head>
 <body>
     <header class="header">
-        <img src="https://i.postimg.cc/qNqfrR8Z/67fddb9c-e7a7-4222-a2eb-b439e54a14b1.jpg" alt="Stephlondon Giftshop Logo" class="logo">
+        <img src="https://i.postimg.cc/qNqfrR8Z/67fddb9c-e7a7-4222-a2eb-b439e54a14b1.jpg" alt="Stephlondon Logo" class="logo">
     </header>
 
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#gallery">Gallery</a>
+    </nav>
+
     <section class="hero">
-        <h1>Welcome to Stephlondon Giftshop</h1>
-        <p>Creating memorable experiences through thoughtful gifts and beautiful spaces</p>
+        <h1>Creative Gifting & Decor Solutions</h1>
+        <p>Transforming spaces and creating memorable experiences with eco-friendly solutions</p>
+        <a href="#contact" class="btn btn-primary">Get Started</a>
+        <a href="https://wa.me/+2349120840447" class="btn btn-secondary">Chat on WhatsApp</a>
     </section>
 
-    <div class="services-grid">
+    <section id="services" class="services-grid">
         <div class="service-card">
-            <img src="https://i.postimg.cc/jDBRkNGh/f565c5d4-9463-4f2c-955b-479271023881.jpg" alt="Interior Decorating">
-            <h2>Interior Decorating</h2>
-            <p>Transform your space with our eco-friendly decor solutions and personalized styling services.</p>
+            <img src="https://i.postimg.cc/jDBRkNGh/f565c5d4-9463-4f2c-955b-479271023881.jpg" alt="Interior Decorating" class="service-image">
+            <div class="service-content">
+                <h3>Interior Decorating</h3>
+                <p>Transform your spaces with our eco-conscious design solutions</p>
+            </div>
         </div>
 
         <div class="service-card">
-            <img src="https://i.postimg.cc/GBYb0tRn/5f1a154b-52e2-49e0-ad93-aef43be0d4e5.jpg" alt="Surprise Packages">
-            <h2>Surprise Packages</h2>
-            <p>Curated gift boxes filled with sustainable goodies for every occasion.</p>
+            <img src="https://i.postimg.cc/GBYb0tRn/5f1a154b-52e2-49e0-ad93-aef43be0d4e5.jpg" alt="Surprise Packages" class="service-image">
+            <div class="service-content">
+                <h3>Custom Gift Packages</h3>
+                <p>Thoughtfully curated surprise packages for every occasion</p>
+            </div>
         </div>
 
         <div class="service-card">
-            <img src="https://i.postimg.cc/bsNYGqx1/IMG-0525.jpg" alt="Teddy Bears">
-            <h2>Luxury Teddy Bears</h2>
-            <p>Handcrafted plush companions made with organic materials.</p>
+            <img src="https://i.postimg.cc/bsNYGqx1/IMG-0525.jpg" alt="Teddy Bears" class="service-image">
+            <div class="service-content">
+                <h3>Premium Teddy Bears</h3>
+                <p>Handcrafted plush companions made with sustainable materials</p>
+            </div>
         </div>
+    </section>
 
-        <div class="service-card">
-            <img src="https://example.com/stanley-cup.jpg" alt="Stanley Cups">
-            <h2>Stanley Cups</h2>
-            <p>Premium reusable drinkware in trendy designs.</p>
+    <section class="contact-section" id="contact">
+        <h2>Contact Us</h2>
+        <div style="margin: 2rem 0;">
+            <a href="mailto:ifunanyachukwuma61@gmail.com" class="btn btn-secondary">
+                <i class="fas fa-envelope"></i> Email Us
+            </a>
+            <a href="https://wa.me/+2349120840447" class="btn btn-primary">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
         </div>
-    </div>
-
-    <section class="contact-section">
-        <h2>Get in Touch</h2>
-        <a href="tel:09120840447">+234 912 084 0447</a>
-        <a href="tel:09134911468">+234 913 491 1468</a>
-        <a href="mailto:ifunanyachukwuma61@gmail.com">ifunanyachukwuma61@gmail.com</a>
+        <p>Phone: +234 912 084 0447 | +234 913 491 1468</p>
     </section>
 
     <footer>
-        <p>© 2024 Stephlondon Giftshop - Sustainable Gifts & Decor</p>
-        <p>Eco-friendly packaging ♻️ Natural materials 🌿 Personalized service</p>
+        <p>© 2023 Stephlondon Gift Shop - Sustainable Gifting & Decor Solutions</p>
+        <p>Creating joyful experiences while protecting our planet</p>
     </footer>
 </body>
 </html>
