@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephlondon Gift Shop - Creative Gifting & Decor Solutions</title>
+    <title>Stephlondon Gift Shop - Premium Gifts & Decor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-green: #27ae60;
-            --primary-yellow: #f1c40f;
-            --primary-blue: #2980b9;
-            --eco-light: #f9f9f9;
-            --eco-dark: #2c3e50;
+            --eco-green: #2ecc71;
+            --sunshine-yellow: #f1c40f;
+            --ocean-blue: #3498db;
+            --natural-white: #ecf0f1;
+            --earth-brown: #2c3e50;
         }
 
         * {
@@ -22,183 +22,277 @@
         }
 
         body {
-            background-color: var(--eco-light);
-            color: var(--eco-dark);
+            background: var(--natural-white);
+            color: var(--earth-brown);
         }
 
+        /* Header Styles */
         .header {
-            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
-                        url('https://www.transparenttextures.com/patterns/clean-gray-paper.png');
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
+                        url('https://www.transparenttextures.com/patterns/paper-fibers.png');
             padding: 1rem;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .logo {
-            max-width: 200px;
+            max-width: 220px;
             margin: 0 auto;
         }
 
-        nav {
-            background: var(--primary-green);
+        /* Navigation */
+        .nav-bar {
+            background: var(--eco-green);
             padding: 1rem;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
-        nav a {
+        .nav-link {
             color: white;
             text-decoration: none;
-            margin: 0 1.5rem;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: transform 0.3s;
         }
 
-        nav a:hover {
-            color: var(--primary-yellow);
+        .nav-link:hover {
+            transform: translateY(-2px);
         }
 
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
-        }
-
-        .services-grid {
+        /* Galaxy Section */
+        .galaxy-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            padding: 2rem;
+            padding: 3rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .service-card {
+        .category-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
 
-        .service-card:hover {
+        .category-card:hover {
             transform: translateY(-5px);
         }
 
-        .service-image {
+        .category-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-bottom: 3px solid var(--primary-yellow);
+            border-bottom: 3px solid var(--sunshine-yellow);
         }
 
-        .service-content {
-            padding: 1.5rem;
+        /* Cart System */
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
         }
 
-        .contact-section {
-            background: var(--primary-blue);
-            color: white;
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            z-index: 1001;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: var(--natural-white);
+            border-radius: 10px;
+        }
+
+        /* CEO Section */
+        .ceo-section {
+            text-align: center;
             padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            margin: 1rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-
-        .btn-primary {
-            background: var(--primary-green);
+            background: var(--ocean-blue);
             color: white;
         }
 
-        .btn-secondary {
-            background: var(--primary-yellow);
-            color: var(--eco-dark);
+        .ceo-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 1rem auto;
+            border: 3px solid var(--sunshine-yellow);
         }
 
-        footer {
-            background: var(--eco-dark);
+        /* WhatsApp Integration */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
             color: white;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        @media (max-width: 768px) {
-            nav a {
-                display: block;
-                margin: 1rem 0;
-            }
+            padding: 1rem;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
+    <!-- Header Section -->
     <header class="header">
         <img src="https://i.postimg.cc/qNqfrR8Z/67fddb9c-e7a7-4222-a2eb-b439e54a14b1.jpg" alt="Stephlondon Logo" class="logo">
+        <div class="nav-bar">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#galaxy" class="nav-link">Galaxy</a>
+            <a href="#cart" class="nav-link cart-trigger">Cart (<span id="cart-count">0</span>)</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
     </header>
 
-    <nav>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a href="#gallery">Gallery</a>
-    </nav>
-
-    <section class="hero">
-        <h1>Creative Gifting & Decor Solutions</h1>
-        <p>Transforming spaces and creating memorable experiences with eco-friendly solutions</p>
-        <a href="#contact" class="btn btn-primary">Get Started</a>
-        <a href="https://wa.me/+2349120840447" class="btn btn-secondary">Chat on WhatsApp</a>
-    </section>
-
-    <section id="services" class="services-grid">
-        <div class="service-card">
-            <img src="https://i.postimg.cc/jDBRkNGh/f565c5d4-9463-4f2c-955b-479271023881.jpg" alt="Interior Decorating" class="service-image">
-            <div class="service-content">
+    <!-- Galaxy Section -->
+    <section id="galaxy" class="galaxy-grid">
+        <!-- Interior Decorating -->
+        <div class="category-card">
+            <img src="https://i.postimg.cc/jDBRkNGh/f565c5d4-9463-4f2c-955b-479271023881.jpg" class="category-image">
+            <div class="category-content">
                 <h3>Interior Decorating</h3>
-                <p>Transform your spaces with our eco-conscious design solutions</p>
+                <button class="add-to-cart" data-item="Interior Decor Package" data-price="299">Add to Cart ₦299</button>
             </div>
         </div>
 
-        <div class="service-card">
-            <img src="https://i.postimg.cc/GBYb0tRn/5f1a154b-52e2-49e0-ad93-aef43be0d4e5.jpg" alt="Surprise Packages" class="service-image">
-            <div class="service-content">
-                <h3>Custom Gift Packages</h3>
-                <p>Thoughtfully curated surprise packages for every occasion</p>
+        <!-- Surprise Packages -->
+        <div class="category-card">
+            <img src="https://i.postimg.cc/GBYb0tRn/5f1a154b-52e2-49e0-ad93-aef43be0d4e5.jpg" class="category-image">
+            <div class="category-content">
+                <h3>Surprise Packages</h3>
+                <button class="add-to-cart" data-item="Surprise Package" data-price="199">Add to Cart ₦199</button>
             </div>
         </div>
 
-        <div class="service-card">
-            <img src="https://i.postimg.cc/bsNYGqx1/IMG-0525.jpg" alt="Teddy Bears" class="service-image">
-            <div class="service-content">
+        <!-- Teddy Bears -->
+        <div class="category-card">
+            <img src="https://i.postimg.cc/bsNYGqx1/IMG-0525.jpg" class="category-image">
+            <div class="category-content">
                 <h3>Premium Teddy Bears</h3>
-                <p>Handcrafted plush companions made with sustainable materials</p>
+                <button class="add-to-cart" data-item="Premium Teddy Bear" data-price="149">Add to Cart ₦149</button>
+            </div>
+        </div>
+
+        <!-- Stanley Cups -->
+        <div class="category-card">
+            <img src="https://i.postimg.cc/kDKhXJPY/1822f78c-3904-4c7e-b0be-76ded2af7372.jpg" class="category-image">
+            <div class="category-content">
+                <h3>Stanley Cups</h3>
+                <button class="add-to-cart" data-item="Stanley Cup" data-price="249">Add to Cart ₦249</button>
             </div>
         </div>
     </section>
 
-    <section class="contact-section" id="contact">
-        <h2>Contact Us</h2>
-        <div style="margin: 2rem 0;">
-            <a href="mailto:ifunanyachukwuma61@gmail.com" class="btn btn-secondary">
-                <i class="fas fa-envelope"></i> Email Us
-            </a>
-            <a href="https://wa.me/+2349120840447" class="btn btn-primary">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
-        </div>
-        <p>Phone: +234 912 084 0447 | +234 913 491 1468</p>
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <h2>Shopping Cart</h2>
+        <div id="cart-items"></div>
+        <p>Total: ₦<span id="cart-total">0</span></p>
+        <button onclick="checkout()" class="btn-checkout">Proceed to WhatsApp Checkout</button>
+    </div>
+
+    <!-- CEO Section -->
+    <section class="ceo-section">
+        <img src="https://i.postimg.cc/jWjSt3Wv/863e7a1d-3fb1-4bcd-b0db-d3f96088238a.jpg" alt="CEO Stephlondon" class="ceo-image">
+        <h2>Meet Our Founder - Stephlondon</h2>
+        <p>Bringing joy through creative gifting solutions since 2020</p>
     </section>
 
-    <footer>
-        <p>© 2023 Stephlondon Gift Shop - Sustainable Gifting & Decor Solutions</p>
-        <p>Creating joyful experiences while protecting our planet</p>
-    </footer>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/+2349120840447" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        let cart = [];
+        
+        // Cart Functions
+        function updateCart() {
+            document.getElementById('cart-count').textContent = cart.length;
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                total += item.price;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.name}</span>
+                        <span>₦${item.price}</span>
+                        <button onclick="removeItem(${index})">×</button>
+                    </div>
+                `;
+            });
+            
+            cartTotal.textContent = total;
+        }
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function checkout() {
+            const message = `Hello Stephlondon Gift Shop! I'd like to order:%0A${
+                cart.map(item => `- ${item.name} (₦${item.price})`).join('%0A')
+            }%0ATotal: ₦${cart.reduce((sum, item) => sum + item.price, 0)}`;
+            
+            window.open(`https://wa.me/+2349120840447?text=${message}`);
+            cart = [];
+            updateCart();
+            document.getElementById('cartModal').style.display = 'none';
+        }
+
+        // Event Listeners
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                addToCart(
+                    button.dataset.item,
+                    parseInt(button.dataset.price)
+                );
+            });
+        });
+
+        document.querySelector('.cart-trigger').addEventListener('click', () => {
+            document.getElementById('cartModal').style.display = 'block';
+        });
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('cartModal')) {
+                document.getElementById('cartModal').style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
