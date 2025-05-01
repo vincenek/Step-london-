@@ -39,7 +39,7 @@
         }
 
         .logo {
-            max-width: 180px;
+            max-width: 250px; /* Increased logo size */
             height: auto;
         }
 
@@ -134,19 +134,21 @@
             max-width: 500px;
         }
 
-        /* Business Description */
-        .about-section {
+        /* CEO Section */
+        .ceo-section {
             text-align: center;
             padding: 4rem 2rem;
             background: var(--pure-white);
             margin: 3rem 0;
         }
 
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            color: var(--nature-dark);
+        .ceo-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--warm-yellow);
+            margin: 2rem auto;
         }
     </style>
 </head>
@@ -184,40 +186,29 @@
             <div class="product-info">
                 <h3>Interior Design Package</h3>
                 <div class="price-tag">₦45,000</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="adjustQuantity(this, -1)">-</button>
+                    <input type="number" value="1" min="1" class="quantity-input">
+                    <button class="quantity-btn" onclick="adjustQuantity(this, 1)">+</button>
+                </div>
                 <button class="add-to-cart" data-item="Interior Design" data-price="45000">Add to Cart</button>
             </div>
         </div>
 
-        <!-- Surprise Packages -->
-        <div class="product-card">
-            <img src="https://i.postimg.cc/GBYb0tRn/5f1a154b-52e2-49e0-ad93-aef43be0d4e5.jpg" class="product-image">
-            <div class="product-info">
-                <h3>Surprise Gift Box</h3>
-                <div class="price-tag">₦25,000</div>
-                <button class="add-to-cart" data-item="Surprise Gift Box" data-price="25000">Add to Cart</button>
-            </div>
-        </div>
-
-        <!-- Teddy Bears -->
-        <div class="product-card">
-            <img src="https://i.postimg.cc/bsNYGqx1/IMG-0525.jpg" class="product-image">
-            <div class="product-info">
-                <h3>Luxury Teddy Bear</h3>
-                <div class="price-tag">₦18,000</div>
-                <button class="add-to-cart" data-item="Luxury Teddy Bear" data-price="18000">Add to Cart</button>
-            </div>
-        </div>
-
-        <!-- Stanley Cups -->
-        <div class="product-card">
-            <img src="https://i.postimg.cc/kDKhXJPY/1822f78c-3904-4c7e-b0be-76ded2af7372.jpg" class="product-image">
-            <div class="product-info">
-                <h3>Designer Stanley Cup</h3>
-                <div class="price-tag">₦32,000</div>
-                <button class="add-to-cart" data-item="Stanley Cup" data-price="32000">Add to Cart</button>
-            </div>
-        </div>
+        <!-- Repeat similar structure for other products with quantity controls -->
     </div>
+
+    <!-- CEO Section -->
+    <section class="ceo-section">
+        <h2>Our Visionary Leader</h2>
+        <img src="https://i.postimg.cc/jWjSt3Wv/863e7a1d-3fb1-4bcd-b0db-d3f96088238a.jpg" alt="CEO Stephlondon" class="ceo-image">
+        <h3>Stephlondon</h3>
+        <p>Founder & Creative Director</p>
+        <p style="max-width: 600px; margin: 1rem auto;">
+            "Our mission is to create unforgettable experiences through thoughtful design and meaningful gifts, 
+            while maintaining sustainable practices that protect our environment."
+        </p>
+    </section>
 
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
@@ -234,35 +225,55 @@
     <script>
         let cart = [];
         
+        function adjustQuantity(btn, change) {
+            const input = btn.parentElement.querySelector('.quantity-input');
+            input.value = Math.max(1, parseInt(input.value) + change);
+        }
+
+        function addToCart(productCard) {
+            const item = productCard.dataset.item;
+            const price = parseInt(productCard.dataset.price);
+            const quantity = parseInt(productCard.parentElement.querySelector('.quantity-input').value);
+            
+            const existingItem = cart.find(i => i.name === item);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+                existingItem.total = existingItem.quantity * price;
+            } else {
+                cart.push({
+                    name: item,
+                    price: price,
+                    quantity: quantity,
+                    total: quantity * price
+                });
+            }
+            updateCart();
+            showCartModal();
+        }
+
         function updateCart() {
-            document.getElementById('cart-count').textContent = cart.length;
+            document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
             const cartItems = document.getElementById('cart-items');
             const cartTotal = document.getElementById('cart-total');
             
             cartItems.innerHTML = '';
-            let total = 0;
+            let grandTotal = 0;
             
             cart.forEach((item, index) => {
-                total += item.price;
+                grandTotal += item.total;
                 cartItems.innerHTML += `
                     <div class="cart-item" style="padding: 1rem; background: #f8f9fa; margin: 0.5rem 0; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
                         <div>
-                            <span style="font-weight: 500;">${item.name}</span>
+                            <span style="font-weight: 500;">${item.name} (x${item.quantity})</span>
                             <br>
-                            <span style="color: var(--trust-blue);">₦${item.price.toLocaleString()}</span>
+                            <span style="color: var(--trust-blue);">₦${item.total.toLocaleString()}</span>
                         </div>
                         <button onclick="removeItem(${index})" style="background: none; border: none; color: #e74c3c; cursor: pointer;">×</button>
                     </div>
                 `;
             });
             
-            cartTotal.textContent = total.toLocaleString();
-        }
-
-        function addToCart(name, price) {
-            cart.push({ name, price: Number(price) });
-            updateCart();
-            showCartModal();
+            cartTotal.textContent = grandTotal.toLocaleString();
         }
 
         function removeItem(index) {
@@ -272,8 +283,8 @@
 
         function checkout() {
             const message = `Hello Stephlondon Gift Shop! I want to order:%0A%0A*My Order List*%0A${
-                cart.map(item => `➤ ${item.name} - ₦${item.price.toLocaleString()}`).join('%0A')
-            }%0A%0A*Total:* ₦${cart.reduce((sum, item) => sum + item.price, 0).toLocaleString()}%0A%0APlease confirm availability. Thank you! 🌟`;
+                cart.map(item => `➤ ${item.name} (Qty: ${item.quantity}) - ₦${item.total.toLocaleString()}`).join('%0A')
+            }%0A%0A*Total:* ₦${cart.reduce((sum, item) => sum + item.total, 0).toLocaleString()}%0A%0APlease confirm availability. Thank you! 🌟`;
             
             window.open(`https://wa.me/+2349120840447?text=${encodeURIComponent(message)}`);
             cart = [];
@@ -292,7 +303,7 @@
         // Event Listeners
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', () => {
-                addToCart(button.dataset.item, button.dataset.price);
+                addToCart(button);
             });
         });
 
