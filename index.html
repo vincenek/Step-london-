@@ -28,15 +28,17 @@
 
         .header {
             background: var(--primary-blue);
-            padding: 2rem 1.5rem;
             text-align: center;
+            position: relative;
+            padding: 0;
         }
 
         .main-logo {
-            max-width: 650px;
-            width: 90%;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 100%;
             display: block;
+            margin: 0 auto;
+            padding: 1rem 0;
         }
 
         .products-grid {
@@ -102,6 +104,21 @@
             background: var(--primary-blue);
             color: white;
             margin: 4rem 0;
+        }
+
+        .ceo-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--luxury-beige);
+        }
+
+        .ceo-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-gold);
+            margin: 2rem auto;
         }
 
         .cart-icon {
@@ -242,15 +259,25 @@
         </a>
     </section>
 
+    <!-- CEO Section -->
+    <section class="ceo-section">
+        <h2>Meet Our Founder</h2>
+        <img src="https://i.postimg.cc/dkh7Qnh5/4af725b3-e7b7-4322-b588-f109f10b9c4f.jpg" 
+             alt="CEO Stephlondon" 
+             class="ceo-image">
+        <h3>Stephlondon</h3>
+        <p>"Creating magical experiences through thoughtful design and sustainable practices"</p>
+    </section>
+
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
-        <h2>Your Cart</h2>
-        <div id="cart-items"></div>
+        <h2>Your Shopping Cart</h2>
+        <div id="cart-items" style="margin: 2rem 0;"></div>
         <div style="border-top: 2px solid var(--primary-blue); padding-top: 1.5rem;">
             <h3>Total: ₦<span id="cart-total">0</span></h3>
             <button onclick="checkout()" 
-                    style="background: var(--primary-blue); color: white; padding: 1rem 2rem; border: none; border-radius: 25px;">
-                WhatsApp Checkout
+                    style="background: var(--primary-blue); color: white; padding: 1rem 2rem; border: none; border-radius: 25px; cursor: pointer;">
+                Complete Purchase via WhatsApp
             </button>
         </div>
     </div>
@@ -258,23 +285,18 @@
     <script>
         let cart = [];
         
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', () => {
-                const product = {
-                    name: button.dataset.item,
-                    price: parseInt(button.dataset.price)
-                };
-                cart.push(product);
-                updateCart();
-                showCartModal();
-            });
-        });
+        // Cart Management
+        function addToCart(name, price) {
+            cart.push({ name, price: parseInt(price) });
+            updateCart();
+            showCartModal();
+        }
 
         function updateCart() {
             document.getElementById('cart-count').textContent = cart.length;
             const cartItems = document.getElementById('cart-items');
             cartItems.innerHTML = cart.map(item => `
-                <div style="display: flex; justify-content: space-between; padding: 1rem; margin: 0.5rem 0; background: white; border-radius: 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; margin: 0.5rem 0; background: white; border-radius: 10px;">
                     <div>${item.name}</div>
                     <div>₦${item.price.toLocaleString()}</div>
                 </div>
@@ -286,27 +308,43 @@
         }
 
         function checkout() {
-            const message = `New Order:%0A${cart.map(item => `- ${item.name} (₦${item.price.toLocaleString()})`).join('%0A')}%0A%0ATotal: ₦${cart.reduce((sum, item) => sum + item.price, 0).toLocaleString()}`;
+            const message = `New Order Inquiry:%0A%0A` +
+                            cart.map(item => `- ${item.name} (₦${item.price.toLocaleString()})`).join('%0A') +
+                            `%0A%0ATotal: ₦${cart.reduce((sum, item) => sum + item.price, 0).toLocaleString()}`;
+            
             window.open(`https://wa.me/+2349120840447?text=${encodeURIComponent(message)}`);
             cart = [];
             updateCart();
+            hideCartModal();
+        }
+
+        // Modal Controls
+        function showCartModal() {
+            document.getElementById('cartModal').style.display = 'block';
+        }
+
+        function hideCartModal() {
             document.getElementById('cartModal').style.display = 'none';
         }
 
-        // Cart Modal Controls
-        document.querySelector('.cart-icon').addEventListener('click', () => {
-            document.getElementById('cartModal').style.display = 'block';
+        // Event Listeners
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                addToCart(button.dataset.item, button.dataset.price);
+            });
         });
 
-        window.onclick = function(event) {
+        document.querySelector('.cart-icon').addEventListener('click', showCartModal);
+
+        window.addEventListener('click', (event) => {
             if(event.target === document.getElementById('cartModal')) {
-                document.getElementById('cartModal').style.display = 'none';
+                hideCartModal();
             }
-        }
+        });
 
         document.addEventListener('keydown', (event) => {
             if(event.key === 'Escape') {
-                document.getElementById('cartModal').style.display = 'none';
+                hideCartModal();
             }
         });
     </script>
