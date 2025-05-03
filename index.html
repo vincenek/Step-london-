@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephlondon Luxury Gifts & Decor</title>
+    <title>Stephlondon Luxury Experiences</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -11,7 +11,6 @@
             --accent-gold: #d4af37;
             --luxury-beige: #f5f3ee;
             --deep-charcoal: #2a2a2a;
-            --eco-mint: #98fb98;
         }
 
         * {
@@ -27,12 +26,10 @@
             line-height: 1.8;
         }
 
-        /* Header Section */
         .header {
             background: var(--primary-blue);
             padding: 2rem 1.5rem;
             text-align: center;
-            position: relative;
         }
 
         .main-logo {
@@ -40,10 +37,8 @@
             width: 90%;
             margin: 0 auto;
             display: block;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
-        /* Main Product Grid */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -58,12 +53,11 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 8px 32px rgba(0,0,0,0.05);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1));
+            transition: transform 0.3s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
         }
 
         .product-image {
@@ -73,20 +67,15 @@
             border-bottom: 3px solid var(--accent-gold);
         }
 
-        .product-info {
-            padding: 1.5rem;
-            text-align: center;
+        .price-tag {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            margin: 1rem 0;
+            display: inline-block;
         }
 
-        .product-category {
-            color: var(--primary-blue);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Gallery Section */
         .gallery-section {
             padding: 4rem 2rem;
             background: rgba(10,44,94,0.03);
@@ -100,23 +89,21 @@
             margin: 0 auto;
         }
 
-        .gallery-item {
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03);
-        }
-
-        .gallery-image {
+        .gallery-item img {
             width: 100%;
             height: 300px;
             object-fit: cover;
+            border-radius: 12px;
         }
 
-        /* Cart System */
+        .booking-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--primary-blue);
+            color: white;
+            margin: 4rem 0;
+        }
+
         .cart-icon {
             position: fixed;
             top: 30px;
@@ -130,14 +117,13 @@
         }
 
         #cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
             background: var(--accent-gold);
             color: var(--deep-charcoal);
             border-radius: 50%;
             padding: 6px 12px;
-            font-weight: 700;
+            position: absolute;
+            top: -8px;
+            right: -8px;
         }
 
         .cart-modal {
@@ -167,85 +153,162 @@
         </div>
     </header>
 
-    <!-- Main Products Section -->
+    <!-- Main Products -->
     <div class="products-grid">
-        <!-- Interior Decor -->
+        <!-- Interior Design -->
         <div class="product-card">
-            <div class="product-category">Luxury Interior Design</div>
             <img src="https://i.postimg.cc/bshBn5qS/18745d0e-81f8-4f69-a137-ff2284ec726f.jpg" class="product-image">
             <div class="product-info">
-                <h3>Modern Living Room Package</h3>
+                <h3>Luxury Interior Package</h3>
                 <div class="price-tag">₦850,000</div>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart" data-item="Interior Design" data-price="850000">Add to Cart</button>
             </div>
         </div>
 
-        <!-- Additional Products... -->
+        <!-- Surprise Packages -->
+        <div class="product-card">
+            <img src="https://i.postimg.cc/GBYb0tRn/5f1a154b-52e2-49e0-ad93-aef43be0d4e5.jpg" class="product-image">
+            <div class="product-info">
+                <h3>Premium Surprise Box</h3>
+                <div class="price-tag">₦125,000</div>
+                <button class="add-to-cart" data-item="Surprise Box" data-price="125000">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Teddy Bears -->
+        <div class="product-card">
+            <img src="https://i.postimg.cc/bsNYGqx1/IMG-0525.jpg" class="product-image">
+            <div class="product-info">
+                <h3>Designer Teddy Bear</h3>
+                <div class="price-tag">₦65,000</div>
+                <button class="add-to-cart" data-item="Teddy Bear" data-price="65000">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Stanley Cups -->
+        <div class="product-card">
+            <img src="https://i.postimg.cc/S29ytP2b/9d4959f4-5f52-44f4-ab01-53ecdd507c58.jpg" class="product-image">
+            <div class="product-info">
+                <h3>Limited Stanley Cup</h3>
+                <div class="price-tag">₦95,000</div>
+                <button class="add-to-cart" data-item="Stanley Cup" data-price="95000">Add to Cart</button>
+            </div>
+        </div>
     </div>
 
     <!-- Full Image Gallery -->
     <section class="gallery-section">
-        <h2 class="section-title">Our Portfolio Gallery</h2>
+        <h2>Our Portfolio Gallery</h2>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="https://i.postimg.cc/jDBRkNGh/f565c5d4-9463-4f2c-955b-479271023881.jpg" class="gallery-image">
+                <img src="https://i.postimg.cc/jDBRkNGh/f565c5d4-9463-4f2c-955b-479271023881.jpg">
             </div>
             <div class="gallery-item">
-                <img src="https://i.postimg.cc/GBYb0tRn/5f1a154b-52e2-49e0-ad93-aef43be0d4e5.jpg" class="gallery-image">
-            </div>
-            <!-- Add all 14 interior images -->
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/bsNYGqx1/IMG-0525.jpg" class="gallery-image">
+                <img src="https://i.postimg.cc/s14q4jHQ/IMG-0534.jpg">
             </div>
             <div class="gallery-item">
-                <img src="https://i.postimg.cc/kDKhXJPY/1822f78c-3904-4c7e-b0be-76ded2af7372.jpg" class="gallery-image">
+                <img src="https://i.postimg.cc/6TrYxMCD/IMG-0533.jpg">
             </div>
-            <!-- Add all remaining images -->
+            <div class="gallery-item">
+                <img src="https://i.postimg.cc/vc17HXnY/IMG-0535.jpg">
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.postimg.cc/LYXYQ6B9/fb846f95-94f9-40bf-b3a7-411e8b9821c8.jpg">
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.postimg.cc/sBbws86R/128852d7-8620-498d-8b39-29378da6dbe0.jpg">
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.postimg.cc/kDKhXJPY/1822f78c-3904-4c7e-b0be-76ded2af7372.jpg">
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.postimg.cc/tn3y5V13/f5c30173-cad5-4f1e-8c38-f7af6a259cd0.jpg">
+            </div>
         </div>
+    </section>
+
+    <!-- Surprise Room Booking -->
+    <section class="booking-section">
+        <h2>Custom Surprise Room Design</h2>
+        <p>Create unforgettable experiences with our premium surprise room packages</p>
+        <div style="margin: 2rem 0;">
+            <span style="background: var(--accent-gold); color: var(--deep-charcoal); padding: 0.8rem 2rem; border-radius: 25px;">
+                Prices Negotiable
+            </span>
+        </div>
+        <a href="https://wa.me/+2349120840447?text=Hi%20Stephlondon!%20I%20want%20to%20book%20a%20surprise%20room" 
+           style="background: var(--accent-gold); color: var(--deep-charcoal); padding: 1rem 2.5rem; border-radius: 30px; text-decoration: none;">
+            Book Now
+        </a>
     </section>
 
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
-        <!-- Cart content from previous implementation -->
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div style="border-top: 2px solid var(--primary-blue); padding-top: 1.5rem;">
+            <h3>Total: ₦<span id="cart-total">0</span></h3>
+            <button onclick="checkout()" 
+                    style="background: var(--primary-blue); color: white; padding: 1rem 2rem; border: none; border-radius: 25px;">
+                WhatsApp Checkout
+            </button>
+        </div>
     </div>
 
     <script>
-        // Full Cart Logic
         let cart = [];
-        const cartModal = document.getElementById('cartModal');
-
-        // Cart Management Functions
-        function updateCartDisplay() {
-            // Existing cart update logic
-        }
-
-        function showCart() {
-            cartModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function hideCart(event) {
-            if(event.target === cartModal || event.key === 'Escape') {
-                cartModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Event Listeners
-        document.addEventListener('click', (event) => {
-            if(event.target.classList.contains('add-to-cart')) {
-                // Add item logic
-                showCart();
-            }
+        
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const product = {
+                    name: button.dataset.item,
+                    price: parseInt(button.dataset.price)
+                };
+                cart.push(product);
+                updateCart();
+                showCartModal();
+            });
         });
 
-        document.addEventListener('click', hideCart);
-        document.addEventListener('keydown', hideCart);
-
-        // WhatsApp Integration
-        function checkout() {
-            // Existing checkout logic
+        function updateCart() {
+            document.getElementById('cart-count').textContent = cart.length;
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = cart.map(item => `
+                <div style="display: flex; justify-content: space-between; padding: 1rem; margin: 0.5rem 0; background: white; border-radius: 10px;">
+                    <div>${item.name}</div>
+                    <div>₦${item.price.toLocaleString()}</div>
+                </div>
+            `).join('');
+            
+            document.getElementById('cart-total').textContent = cart
+                .reduce((total, item) => total + item.price, 0)
+                .toLocaleString();
         }
+
+        function checkout() {
+            const message = `New Order:%0A${cart.map(item => `- ${item.name} (₦${item.price.toLocaleString()})`).join('%0A')}%0A%0ATotal: ₦${cart.reduce((sum, item) => sum + item.price, 0).toLocaleString()}`;
+            window.open(`https://wa.me/+2349120840447?text=${encodeURIComponent(message)}`);
+            cart = [];
+            updateCart();
+            document.getElementById('cartModal').style.display = 'none';
+        }
+
+        // Cart Modal Controls
+        document.querySelector('.cart-icon').addEventListener('click', () => {
+            document.getElementById('cartModal').style.display = 'block';
+        });
+
+        window.onclick = function(event) {
+            if(event.target === document.getElementById('cartModal')) {
+                document.getElementById('cartModal').style.display = 'none';
+            }
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if(event.key === 'Escape') {
+                document.getElementById('cartModal').style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
