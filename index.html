@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephlondon Gift Shop - Premium Gifts & Decor</title>
+    <title>Stephlondon Gift Shop - Premium Gifting Experience</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -30,31 +30,24 @@
 
         .header {
             background: var(--fresh-green);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 2rem;
+            text-align: center;
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
         }
 
-        .logo {
-            max-width: 250px;
-            height: auto;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
-                        url('https://www.transparenttextures.com/patterns/soft-circle-scales.png');
+        .main-logo {
+            max-width: 500px;
+            width: 90%;
+            margin: 0 auto;
+            display: block;
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
             padding: 3rem 2rem;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -66,9 +59,13 @@
             transition: transform 0.3s ease;
         }
 
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
         .product-image {
             width: 100%;
-            height: 250px;
+            height: 320px;
             object-fit: cover;
             border-bottom: 3px solid var(--warm-yellow);
         }
@@ -81,177 +78,208 @@
         .price-tag {
             background: var(--trust-blue);
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
             font-weight: bold;
             margin: 1rem 0;
+            display: inline-block;
         }
 
         .quantity-controls {
             margin: 1rem 0;
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
 
         .quantity-btn {
             background: var(--fresh-green);
             color: white;
             border: none;
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             cursor: pointer;
+            font-size: 1.1rem;
         }
 
         .add-to-cart {
             background: var(--warm-yellow);
             color: var(--nature-dark);
             border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
+            padding: 1rem 2rem;
+            border-radius: 30px;
             cursor: pointer;
             font-weight: bold;
+            transition: transform 0.3s;
         }
 
-        .ceo-section {
+        .add-to-cart:hover {
+            transform: scale(1.05);
+        }
+
+        .booking-section {
             text-align: center;
             padding: 4rem 2rem;
             background: var(--pure-white);
             margin: 3rem 0;
         }
 
+        .ceo-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--fresh-green);
+            color: white;
+        }
+
         .ceo-image {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--warm-yellow);
             margin: 2rem auto;
         }
+
+        .cart-icon {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        #cart-count {
+            background: var(--warm-yellow);
+            color: var(--nature-dark);
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 0.9rem;
+            margin-left: 5px;
+        }
+
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            z-index: 1001;
+            width: 90%;
+            max-width: 500px;
+        }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
-        <img src="https://i.postimg.cc/qNqfrR8Z/67fddb9c-e7a7-4222-a2eb-b439e54a14b1.jpg" alt="Stephlondon Logo" class="logo">
+        <img src="https://i.postimg.cc/23v6H1hL/15ebd38b-cc29-4e5a-9f50-29300016254c.jpg" 
+             alt="Stephlondon Logo" 
+             class="main-logo">
         <div class="cart-icon">
             <i class="fas fa-shopping-cart"></i>
             <span id="cart-count">0</span>
         </div>
     </header>
 
-    <section class="hero">
-        <h1>Curated Joy & Beautiful Spaces</h1>
-        <p>Your one-stop shop for premium gifts and eco-friendly decor solutions</p>
-    </section>
-
+    <!-- Products Grid -->
     <div class="products-grid">
-        <!-- Interior Decor -->
-        <div class="product-card">
-            <img src="https://i.postimg.cc/jDBRkNGh/f565c5d4-9463-4f2c-955b-479271023881.jpg" class="product-image">
-            <div class="product-info">
-                <h3>Luxury Interior Package</h3>
-                <div class="price-tag">₦65,000</div>
-                <div class="quantity-controls">
-                    <button class="quantity-btn" onclick="adjustQuantity(this, -1)">-</button>
-                    <input type="number" value="1" min="1" class="quantity-input">
-                    <button class="quantity-btn" onclick="adjustQuantity(this, 1)">+</button>
-                </div>
-                <button class="add-to-cart" data-item="Luxury Interior Package" data-price="65000">Add to Cart</button>
-            </div>
-        </div>
-
-        <!-- Surprise Packages -->
-        <div class="product-card">
-            <img src="https://i.postimg.cc/GBYb0tRn/5f1a154b-52e2-49e0-ad93-aef43be0d4e5.jpg" class="product-image">
-            <div class="product-info">
-                <h3>Premium Surprise Box</h3>
-                <div class="price-tag">₦35,000</div>
-                <div class="quantity-controls">
-                    <button class="quantity-btn" onclick="adjustQuantity(this, -1)">-</button>
-                    <input type="number" value="1" min="1" class="quantity-input">
-                    <button class="quantity-btn" onclick="adjustQuantity(this, 1)">+</button>
-                </div>
-                <button class="add-to-cart" data-item="Premium Surprise Box" data-price="35000">Add to Cart</button>
-            </div>
-        </div>
-
-        <!-- Teddy Bears -->
-        <div class="product-card">
-            <img src="https://i.postimg.cc/bsNYGqx1/IMG-0525.jpg" class="product-image">
-            <div class="product-info">
-                <h3>Designer Teddy Bear</h3>
-                <div class="price-tag">₦22,000</div>
-                <div class="quantity-controls">
-                    <button class="quantity-btn" onclick="adjustQuantity(this, -1)">-</button>
-                    <input type="number" value="1" min="1" class="quantity-input">
-                    <button class="quantity-btn" onclick="adjustQuantity(this, 1)">+</button>
-                </div>
-                <button class="add-to-cart" data-item="Designer Teddy Bear" data-price="22000">Add to Cart</button>
-            </div>
-        </div>
-
         <!-- Stanley Cups -->
         <div class="product-card">
-            <img src="https://i.postimg.cc/kDKhXJPY/1822f78c-3904-4c7e-b0be-76ded2af7372.jpg" class="product-image">
+            <img src="https://i.postimg.cc/S29ytP2b/9d4959f4-5f52-44f4-ab01-53ecdd507c58.jpg" 
+                 alt="Stanley Cup" 
+                 class="product-image">
             <div class="product-info">
-                <h3>Limited Stanley Cup</h3>
-                <div class="price-tag">₦40,000</div>
+                <h3>Premium Stanley Cup</h3>
+                <div class="price-tag">₦18,000</div>
                 <div class="quantity-controls">
                     <button class="quantity-btn" onclick="adjustQuantity(this, -1)">-</button>
                     <input type="number" value="1" min="1" class="quantity-input">
                     <button class="quantity-btn" onclick="adjustQuantity(this, 1)">+</button>
                 </div>
-                <button class="add-to-cart" data-item="Limited Stanley Cup" data-price="40000">Add to Cart</button>
+                <button class="add-to-cart" 
+                        data-item="Premium Stanley Cup" 
+                        data-price="18000">
+                    Add to Cart
+                </button>
             </div>
         </div>
 
-        <!-- Additional Products -->
+        <!-- Interior Decorations -->
         <div class="product-card">
-            <img src="https://i.postimg.cc/s14q4jHQ/IMG-0534.jpg" class="product-image">
+            <img src="https://i.postimg.cc/bshBn5qS/18745d0e-81f8-4f69-a137-ff2284ec726f.jpg" 
+                 alt="Interior Design" 
+                 class="product-image">
             <div class="product-info">
-                <h3>Modern Interior Package</h3>
-                <div class="price-tag">₦55,000</div>
-                <div class="quantity-controls">
-                    <button class="quantity-btn" onclick="adjustQuantity(this, -1)">-</button>
-                    <input type="number" value="1" min="1" class="quantity-input">
-                    <button class="quantity-btn" onclick="adjustQuantity(this, 1)">+</button>
-                </div>
-                <button class="add-to-cart" data-item="Modern Interior Package" data-price="55000">Add to Cart</button>
+                <h3>Luxury Interior Package</h3>
+                <div class="price-tag">₦120,000</div>
+                <button class="add-to-cart" 
+                        data-item="Luxury Interior Package" 
+                        data-price="120000">
+                    Add to Cart
+                </button>
             </div>
         </div>
 
+        <!-- Additional Products (Repeat structure for each image) -->
+        <!-- Period Package -->
         <div class="product-card">
-            <img src="https://i.postimg.cc/6TrYxMCD/IMG-0533.jpg" class="product-image">
+            <img src="https://i.postimg.cc/tn3y5V13/f5c30173-cad5-4f1e-8c38-f7af6a259cd0.jpg" 
+                 alt="Period Package" 
+                 class="product-image">
             <div class="product-info">
-                <h3>Deluxe Gift Package</h3>
-                <div class="price-tag">₦45,000</div>
-                <div class="quantity-controls">
-                    <button class="quantity-btn" onclick="adjustQuantity(this, -1)">-</button>
-                    <input type="number" value="1" min="1" class="quantity-input">
-                    <button class="quantity-btn" onclick="adjustQuantity(this, 1)">+</button>
-                </div>
-                <button class="add-to-cart" data-item="Deluxe Gift Package" data-price="45000">Add to Cart</button>
+                <h3>Special Period Package</h3>
+                <div class="price-tag">₦25,000</div>
+                <button class="add-to-cart" 
+                        data-item="Special Period Package" 
+                        data-price="25000">
+                    Add to Cart
+                </button>
             </div>
         </div>
+
+        <!-- Add remaining products following the same pattern -->
     </div>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <h2>Surprise Room Booking</h2>
+        <p>Create unforgettable moments with our customizable surprise experiences</p>
+        <div class="price-tag" style="background: var(--fresh-green);">Negotiable</div>
+        <a href="https://wa.me/+2349120840447?text=Hi%20Stephlondon!%20I%20want%20to%20book%20a%20surprise%20room" 
+           class="add-to-cart" 
+           style="text-decoration: none; margin-top: 1rem;">
+            Book Now
+        </a>
+    </section>
 
     <!-- CEO Section -->
     <section class="ceo-section">
         <h2>Meet Our Founder</h2>
-        <img src="https://i.postimg.cc/jWjSt3Wv/863e7a1d-3fb1-4bcd-b0db-d3f96088238a.jpg" alt="CEO Stephlondon" class="ceo-image">
+        <img src="https://i.postimg.cc/dkh7Qnh5/4af725b3-e7b7-4322-b588-f109f10b9c4f.jpg" 
+             alt="CEO Stephlondon" 
+             class="ceo-image">
         <h3>Stephlondon</h3>
-        <p>"Creating memorable experiences through thoughtful design and sustainable practices"</p>
+        <p>"Creating magical experiences through thoughtful design and sustainable practices"</p>
     </section>
 
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
-        <h2>Your Cart</h2>
-        <div id="cart-items"></div>
-        <div>
+        <h2 style="margin-bottom: 1.5rem;">Your Shopping Cart</h2>
+        <div id="cart-items" style="margin-bottom: 2rem;"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
             <h3>Total: ₦<span id="cart-total">0</span></h3>
-            <button onclick="checkout()" class="add-to-cart">Checkout via WhatsApp</button>
+            <button onclick="checkout()" 
+                    class="add-to-cart" 
+                    style="background: var(--fresh-green); color: white;">
+                Checkout via WhatsApp
+            </button>
         </div>
     </div>
 
@@ -267,16 +295,21 @@
             const product = {
                 name: button.dataset.item,
                 price: parseInt(button.dataset.price),
-                quantity: parseInt(button.parentElement.querySelector('.quantity-input').value)
+                quantity: button.parentElement.querySelector('.quantity-input') 
+                         ? parseInt(button.parentElement.querySelector('.quantity-input').value)
+                         : 1
             };
 
             const existing = cart.find(item => item.name === product.name);
             if(existing) {
                 existing.quantity += product.quantity;
+                existing.total = existing.quantity * existing.price;
             } else {
-                cart.push(product);
+                cart.push({
+                    ...product,
+                    total: product.quantity * product.price
+                });
             }
-            
             updateCart();
             showCartModal();
         }
@@ -284,45 +317,66 @@
         function updateCart() {
             document.getElementById('cart-count').textContent = cart.reduce((total, item) => total + item.quantity, 0);
             const cartItems = document.getElementById('cart-items');
-            cartItems.innerHTML = cart.map(item => `
-                <div class="cart-item">
-                    ${item.name} (x${item.quantity}) - ₦${(item.price * item.quantity).toLocaleString()}
-                    <button onclick="removeItem('${item.name}')">×</button>
+            cartItems.innerHTML = cart.map((item, index) => `
+                <div class="cart-item" style="padding: 1rem; background: #f8f9fa; margin: 0.5rem 0; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="font-weight: 500;">${item.name}</span>
+                        <br>
+                        <span style="color: var(--trust-blue);">Qty: ${item.quantity} × ₦${item.price.toLocaleString()}</span>
+                    </div>
+                    <div>
+                        <span style="font-weight: bold;">₦${item.total.toLocaleString()}</span>
+                        <button onclick="removeItem(${index})" style="background: none; border: none; color: #e74c3c; cursor: pointer; margin-left: 1rem;">×</button>
+                    </div>
                 </div>
             `).join('');
             
             document.getElementById('cart-total').textContent = cart
-                .reduce((total, item) => total + (item.price * item.quantity), 0)
+                .reduce((sum, item) => sum + item.total, 0)
                 .toLocaleString();
         }
 
-        function removeItem(name) {
-            cart = cart.filter(item => item.name !== name);
+        function removeItem(index) {
+            cart.splice(index, 1);
             updateCart();
         }
 
         function checkout() {
-            const message = `*New Order Request*%0A%0A${cart.map(item => 
-                `➤ ${item.name} (Qty: ${item.quantity}) - ₦${(item.price * item.quantity).toLocaleString()}`
-            ).join('%0A')}%0A%0A*Total: ₦${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toLocaleString()}*`;
-            
+            const message = `*NEW ORDER REQUEST*%0A%0A` +
+                            `Customer Order Details:%0A%0A` +
+                            cart.map(item => 
+                                `➤ ${item.name}%0A` +
+                                `   Quantity: ${item.quantity}%0A` +
+                                `   Price: ₦${item.price.toLocaleString()}%0A` +
+                                `   Total: ₦${item.total.toLocaleString()}%0A`
+                            ).join('%0A') +
+                            `%0A*GRAND TOTAL: ₦${cart.reduce((sum, item) => sum + item.total, 0).toLocaleString()}*%0A%0A` +
+                            `Please confirm availability and payment details. Thank you! 💚`;
+
             window.open(`https://wa.me/+2349120840447?text=${encodeURIComponent(message)}`);
             cart = [];
             updateCart();
+            hideCartModal();
+        }
+
+        function showCartModal() {
+            document.getElementById('cartModal').style.display = 'block';
+        }
+
+        function hideCartModal() {
             document.getElementById('cartModal').style.display = 'none';
         }
 
+        // Event Listeners
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', () => addToCart(button));
         });
 
-        document.querySelector('.cart-icon').addEventListener('click', () => {
-            document.getElementById('cartModal').style.display = 'block';
-        });
+        document.querySelector('.cart-icon').addEventListener('click', showCartModal);
 
         window.onclick = function(event) {
             if(event.target === document.getElementById('cartModal')) {
-                document.getElementById('cartModal').style.display = 'none';
+                hideCartModal();
             }
         }
     </script>
